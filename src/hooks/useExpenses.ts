@@ -16,7 +16,7 @@ const useExpenses = () => {
         .catch((error) => setErrors(error.message))
         .finally(() => setLoader(false));
     }, []);
-    return {expenses}
+    return {expenses, error, isLoading}
 }
 
 export default useExpenses;
