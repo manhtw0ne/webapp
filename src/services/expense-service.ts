@@ -8,3 +8,7 @@ export const getExpenses = () => {
 export const getExpenseByExpenseId = (expenseId: string) => {
     return apiClient.get<Expense>(`/expenses/$ {expenseId}`);
 }
+
+export const saveOrUpdateExpense = (expense: Expense) => {
+    return apiClient.post<Expense>(`/expenses`, expense);
+}
