@@ -1,29 +1,23 @@
-interface Props {
-    options: string[];
-    name: string;
-    id: string;
-    onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
-    onBlur: (e: React.ChangeEvent<HTMLSelectElement>) => void;
-    label: string;
-    error?: string;
-    touched?: boolean;
-}
+import React from 'react'
 
-
-const Dropdown = ({options, id, name, value, onChange, onBlur, label, error, touched}: Props) => {
+const Dropdown = () => {
   return (
     <div className='mb-3'>
-      <label htmlFor={id} className='form-label'>
-        {label}
+      <label htmlFor="category" className="htmlFor form-label">
+        Category
       </label>
-      <select name="{name}" id="{id}" className='form-control' onChange={onChange} onBlur={onBlur}>
-        <option value={value} label='Select Category' />
-        {options.map(option => key={option} value={option} label={option} />)}
-        
-      </select>
-      {touched && error ? <div className="text-danger fst-italic">{error}</div>: null}
+      <select name={name} id={id} className='form-control' onChange={onchange} onBlur={onBlur} value={value}>
+        <option value="" label="Select Category" />
+        {options.map((option) => (
+            <option key={option} value={option} label={option} />
+        ))}
+    </select>
+    {touched && error ? (
+
+        <div className='text-danger fst-italic'>{error}</div>
+    ) : null}
     </div>
   )
-}
+};
 
-export default Dropdown
+export default Dropdown;
