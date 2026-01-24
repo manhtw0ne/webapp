@@ -51,6 +51,8 @@ const NewExpense = () => {
       .then(response => {
         if (response && response.status === 201) {
           navigate("/");
+        } else if (response && response.status === 200) {
+          navigate(`/view/${expenseId}`);
         }
       }
     ).catch(error => {console.log(error);
