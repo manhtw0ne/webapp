@@ -1,18 +1,24 @@
+import { useState } from "react";
 import {Profile} from "../model/Profile"
+import { createProfile } from "../services/auth-service";
+
 
 export const useRegister = () => {
     const [error, setError] = useState<string>("");
     const [isLoading, setLoader] = useState<boolean>(false);
+    const [toast, setToast] = useState<string>("");
     const signup = (profile: Profile) => {
         setLoader(true);
       createProfile(profile)
         .then((response) => {
           if (response && response.status === 201) {
-            resetForm();
+            setToast("Profile is successfully created");
           }
         })
-        .catch((error) => console.log(error))
+        .catch((error) => console.log(error.message ))
         .finally(() => setLoader(false));
     
     }
+    return {error, isLoading, signup, toast}
+
 }
