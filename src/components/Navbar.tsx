@@ -1,9 +1,10 @@
-import {FaBars} from "react-icons/fa"
 import Logo from "./Logo";
 import {NavLink} from "react-router-dom"
 import Register from '../pages/register/Register';
+import { useAuthContext } from '../hooks/AuthContext';
 
 const Navbar = () => {
+  const {isAuthenticated, updateAuth} = useAuthContext()
     return <nav className="navbar navbar-expand-lg">
   <div className="container">
     <Logo />

@@ -72,9 +72,21 @@ const Register = () => {
             {formik.touched.confirmPassword && formik.errors.confirmPassword ? <div className="text-danger fst-italic">{formik.errors.confirmPassword}</div> : null} 
 
           </div>
-          <button className="btn btn-sm btn-primary app-primary-bg-color btn-outline-light" type="submit">
+          {isLoading && (
+            <button className="btn btn-sm btn-primary btn-outline-light" type="submit" disabled>
+              Loading...
+            </button>
+          )}
+
+          {!isLoading && (
+            <button
+            className="btn btn-sm app-primary-bg-color btn-outline-light"
+            type="submit"
+          >
             Register
           </button>
+          )}
+            
         </form>
       </div>
     </div>
