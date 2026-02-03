@@ -4,21 +4,40 @@ import Register from '../pages/register/Register';
 import { useAuthContext } from '../hooks/AuthContext';
 
 const Navbar = () => {
-  const {isAuthenticated, updateAuth} = useAuthContext()
+  const {isAuthenticated, updateAuth} = useAuthContext();
+  const { logout} = useSignout();
+
+
+
     return <nav className="navbar navbar-expand-lg">
   <div className="container">
     <Logo />
     
     <div className="collapse navbar-collapse" id="navbarNav">
       <div className="navbar-nav">
+        {isAuthenticated ? 
+        <>
         <NavLink className="nav-link" to="/">Dashboard</NavLink>
         <NavLink className="nav-link" to="/new">New Expense</NavLink>
-        <NavLink className="nav-link" to="/reports">Reports</NavLink>
+        <NavLink className="nav-link" to="/reports">Reports</NavLink> : null}
+        </>
       </div>
     </div>
     <div className="d-flex" role="search">
-      <NavLink className="btn btn-sm btn-outline-light" to="/login">Login</NavLink>
+      {!isAuthenticated ? (
+        <>
+          <NavLink className="btn btn-sm btn-outline-light" to="/login">Login</NavLink>
       <NavLink className="btn btn-sm btn-outline-light mx-1" to="/register">Register</NavLink>
+        </>
+      ) : null
+
+      }
+      {isAuthenticated ? (
+        <button className="btn btn-sm app-primary-bg-color btn-outline-light" onClick={logout}>
+        Logout
+      </button>
+      ) : null}
+
       <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <FaBars color="white" />
       </button>

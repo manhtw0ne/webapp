@@ -9,7 +9,8 @@ const Dashboard = () => {
     
     const totalExpenses = expenses.reduce((acc: number, expense: Expense) => acc + expense.amount, 0);
     return (<div className="container">
-        {isLoading && <p>Loading...</p>}
+        {isLoading && <p className="text-danger"/> <p>Loading...</p>}
+        {error && <p>{error}</p>}
         {error && <p>{error}</p>}
         <DashboardStatus loggedInUser={loggedInUser} totalExpenses={totalExpenses}/>
         <hr />
