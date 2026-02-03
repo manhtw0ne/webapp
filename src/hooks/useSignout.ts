@@ -1,19 +1,21 @@
 import {Profile} from "../model/Profile"
 
-export const useRegister = () => {
+export const usesignout = () => {
+    const {isAuthenticated, updateAuth} = useAuthContext();
     const [error, setError] = useState<string>("");
     const [isLoading, setLoader] = useState<boolean>(false);
-    const [toast, setToast] = useState<string>("");
-    const signup = (profile: Profile) => {
+
+    const logout = () => {
         setLoader(true);
-      createProfile(profile)
+      signout()
         .then((response) => {
-          if (response && response.status === 201) {
-            setToast("Profile is successfully created");
-          }
+          if (response && response.status === 204) {
+            localStorage.clear();
+            updateAuth(false);
+        }
         })
         .catch((error) => console.log(error.message ))
         .finally(() => setLoader(false));
-    
     }
+    return {logout}
 }

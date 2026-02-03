@@ -1,16 +1,11 @@
-import React from 'react';
-import ReactDOM from "react-dom/client"
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
 import App from './App';
 import './index.css'
-import "bootstrap/dist/js/bootstrap.js"
 import "bootstrap/dist/css/bootstrap.css"
-import { AuthContextProvider } from './context/AuthContext';
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  
-  <React.StrictMode>
-    <AuthContextProvider>
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
     <App />
-  </AuthContextProvider>,
-  </React.StrictMode>
+  </StrictMode>,
 )

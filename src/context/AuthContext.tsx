@@ -19,7 +19,7 @@ export const AuthContextProvider: React.FC<{children: ReactNode}> = ({children})
         const authObject = localStorage.getItem("user");
         if (authObject) {
             setAuthenticated(true);
-        }
+        } 
     }, []);
     
     return (
